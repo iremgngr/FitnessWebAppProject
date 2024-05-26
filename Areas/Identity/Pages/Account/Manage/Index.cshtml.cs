@@ -119,7 +119,7 @@ namespace loginDemo.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                Biography = ProfileDetail.Biography // Biyografi özelliğini ekleyin
+                Biography = ProfileDetail.Biography // Biyografi özelliğini ekle
             };
         }
 
@@ -153,7 +153,7 @@ namespace loginDemo.Areas.Identity.Pages.Account.Manage
                 .Where(tr => tr.rate.UserId == user.Id && tr.rate.IsSaved)
                 .Select(tr => tr.todo)
                 .ToListAsync();
-                
+
             await LoadAsync(user);
             return Page();
         }

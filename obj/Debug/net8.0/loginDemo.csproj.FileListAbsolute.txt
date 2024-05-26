@@ -802,3 +802,4 @@ C:\Users\exa\Desktop\loginDemoFinal\obj\Debug\net8.0\refint\loginDemo.dll
 C:\Users\exa\Desktop\loginDemoFinal\obj\Debug\net8.0\loginDemo.pdb
 C:\Users\exa\Desktop\loginDemoFinal\obj\Debug\net8.0\loginDemo.genruntimeconfig.cache
 C:\Users\exa\Desktop\loginDemoFinal\obj\Debug\net8.0\ref\loginDemo.dll
+c:\Users\exa\Desktop\loginDemoFinal\obj\Debug\net8.0\loginDemo.sourcelink.json

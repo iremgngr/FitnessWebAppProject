@@ -29,11 +29,9 @@
         <option value="Cardio">Cardio</option>
         <option value="Weight Loss">Weight Loss</option>
         <option value="Strength Training">Strength Training</option>
-        <!-- Add other categories as needed -->
     </select>
 
     @*
-    <input type="date" name="startDate" placeholder="Start Date">
     <input type="date" name="endDate" placeholder="End Date">*@
     
     <label for="SortOrder" style="margin-top: 10px;">Sort Order:</label>
@@ -60,7 +58,6 @@
                             <h6 class="card-title">@item.Description</h6>
                             <h6 class="card-title">@item.Category</h6>
                             <h6 class="card-title">@item.EndDate</h6>
-                            <!-- Add other properties as needed -->
                             <form method="post" style="margin-top: 5px;">
                                 <button type="submit" class="btn btn-primary" asp-page="Rate" asp-route-id="@item.Id">Rate it!</button><br>
                             </form>

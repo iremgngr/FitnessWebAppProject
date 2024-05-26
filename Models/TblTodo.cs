@@ -21,5 +21,5 @@ public partial class TblTodo
 
     public string? DifficultyLevel { get; set; }  // New property
 
-    public string? Comment { get; set; }
+    public string? Comment { get; set; } // New property
 }

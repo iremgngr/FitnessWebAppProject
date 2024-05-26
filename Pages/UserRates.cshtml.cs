@@ -20,7 +20,6 @@ namespace MyApp.Namespace
 
         public List<float> Ratings { get; set; } = default!;
 
-        //public string? SortOrder { get; set; } = default!;
 
         public string Keyword { get; set; }
 

@@ -13,5 +13,5 @@ public partial class UserDetail
 
     public string? UserId { get; set; }
 
-    public string? Biography { get; set; } 
+    public string? Biography { get; set; } //new attribute
 }

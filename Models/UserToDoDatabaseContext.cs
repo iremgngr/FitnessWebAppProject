@@ -88,7 +88,7 @@ public partial class UserToDoDatabaseContext : DbContext
                 .HasColumnName("userId");
             entity.Property(e => e.Biography) // Yeni eklenen özellik için yapılandırma
                 .HasColumnName("biography")
-                .HasMaxLength(100); // İsteğe bağlı: Maksimum uzunluk belirleme
+                .HasMaxLength(100);
         });
 
         modelBuilder.Entity<UserRate>(entity =>
