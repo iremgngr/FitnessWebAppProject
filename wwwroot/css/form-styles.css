@@ -1,0 +1,41 @@
+/* form-styles.css */
+.custom-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="date"],
+.custom-form select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.custom-form button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.custom-form button:hover {
+    background-color: #45a049;
+}
+
+.custom-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}

@@ -1,0 +1,84 @@
+﻿@page
+@model MyApp.Namespace.ToDoModel
+@{
+    ViewData["Title"] = "ToDo List";
+}
+<h2>ToDo Page</h2>
+
+<form method="post">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="NewToDo.Title" class="control-label"></label>
+    <input asp-for="NewToDo.Title" class="form-control" />
+    <span asp-validation-for="NewToDo.Title" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="NewToDo.Description" class="control-label"></label>
+    <input asp-for="NewToDo.Description" class="form-control" />
+    <span asp-validation-for="NewToDo.Description" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="NewToDo.EndDate" class="control-label"></label>
+<input class="form-control" asp-for="NewToDo.EndDate" />
+</div>
+<div class="form-group">
+    <label asp-for="NewToDo.Category" class="control-label"></label>
+    <select asp-for="NewToDo.Category" class="form-control" id="PizzaSize">
+        <option value="">-- Select Category --</option>
+        <option value="Step">Step</option>
+        <option value="Squad">Squad</option>
+        <option value="Cardio">Cardio</option>
+        <option value="Weight Loss">Weight Loss</option>
+        <option value="Strength Training">Strength Training</option>
+    </select>
+    <span asp-validation-for="NewToDo.Category" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="NewToDo.DifficultyLevel" class="control-label"></label>
+    <select asp-for="NewToDo.DifficultyLevel" class="form-control" id="PizzaSize">
+        <option value="">-- Select Difficulty Level --</option>
+        <option value="Easy">Easy Level</option>
+        <option value="Medium">Medium Level</option>
+        <option value="Hard">Hard Level</option>
+    </select>
+    <span asp-validation-for="NewToDo.DifficultyLevel" class="text-danger"></span>
+</div>
+
+<div class="form-group" style="margin-top: 20px;">
+    <input type="submit" value="Create" class="btn btn-primary" />
+</div>
+</form>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
+
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Challenge Instructions</th>
+            <th scope="col">Category</th>
+            <th scope="col">Difficulty Level</th>
+            <th scope="col">End date</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var todo in Model.ToDoList)
+    {
+        <tr>
+            <td>@todo.Title</td>
+            <td>@todo.Description</td>
+            <td>@todo.Category</td>
+            <td>@todo.DifficultyLevel</td>
+            <td>@todo.EndDate</td>
+            <td>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@todo.Id">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

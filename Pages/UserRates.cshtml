@@ -1,0 +1,99 @@
+﻿@page
+@model MyApp.Namespace.UserRatesModel
+@{
+    ViewData["Title"] = "Rate todo";
+    @*ViewData["Title"] = "ToDo Ratings";*@
+
+    ViewBag.Ratings = string.Join(", ", Model.Ratings);
+
+}
+<link href="~/css/jquery.rateyo.min.css" rel="stylesheet" />
+<link href="~/css/form-styles.css" rel="stylesheet" />
+
+
+<form method="get" class="custom-form">
+    <input type="text" name="keywords" placeholder="Keywords">
+
+    
+    <select name="difficultyLevel">
+        <option value="">Difficulty Level</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+    </select>
+
+    <select name="category">
+        <option value="">Category</option>
+        <<option value="Step">Step</option>
+        <option value="Squad">Squad</option>
+        <option value="Cardio">Cardio</option>
+        <option value="Weight Loss">Weight Loss</option>
+        <option value="Strength Training">Strength Training</option>
+        <!-- Add other categories as needed -->
+    </select>
+
+    @*
+    <input type="date" name="startDate" placeholder="Start Date">
+    <input type="date" name="endDate" placeholder="End Date">*@
+    
+    <label for="SortOrder" style="margin-top: 10px;">Sort Order:</label>
+    <select name="SortOrder" id="SortOrder">
+        <option value="">Select Sort Order</option>
+        <option value="easy_to_hard">Easy to Hard</option>
+        <option value="hard_to_easy">Hard to Easy</option>
+    </select> 
+
+    <button type="submit" style="background-color: #4CAF50;">Search</button>
+</form>
+
+
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        @{
+            @foreach (var item in Model.ToDoList)
+            {
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">@item.Title</h4>
+                            <h6 class="card-title">@item.Description</h6>
+                            <h6 class="card-title">@item.Category</h6>
+                            <h6 class="card-title">@item.EndDate</h6>
+                            <!-- Add other properties as needed -->
+                            <form method="post" style="margin-top: 5px;">
+                                <button type="submit" class="btn btn-primary" asp-page="Rate" asp-route-id="@item.Id">Rate it!</button><br>
+                            </form>
+                            <form method="post" style="margin-top: 10px;" asp-page-handler="Save">
+                                <input type="hidden" name="todoId" value="@item.Id" />
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                        <div class="rateYo" style="margin-bottom: 10px; margin-left: 5px;"></div>
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+</div>
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/jquery.rateyo.min.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(function () {
+            var Ratings = [@ViewBag.Ratings],
+                stars = $('.rateYo');
+            for (var i = 0; i < stars.length; i++) {
+                $('.rateYo').eq(i).rateYo({
+                    rating: Ratings[i],
+                    readOnly: true
+                });
+            }
+        });
+    </script>
+}
